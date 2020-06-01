@@ -9,6 +9,7 @@ namespace DynamicArray
         T[] _items;
 
         public int Count { get; internal set; }
+
         public int Capacity => _items.Length;
 
         public T this[int index]
@@ -32,6 +33,7 @@ namespace DynamicArray
                 _items[index] = value;
             }
         }
+
         public ArrayList() : this(0)
         {
 
@@ -77,7 +79,6 @@ namespace DynamicArray
             return IndexOf(item) != -1;
         }
 
-
         public void Add(T item)
         {
             if (_items.Length == Count)
@@ -90,7 +91,7 @@ namespace DynamicArray
 
         public void Insert(int index, T item)
         {
-            if (index > Count)
+            if (index > Count || index < 0)
             {
                 throw new IndexOutOfRangeException();
             }
@@ -108,7 +109,7 @@ namespace DynamicArray
 
         public void RemoveAt(int index)
         {
-            if (index > Count - 1)
+            if (index > Count - 1 || index < 0)
             {
                 throw new IndexOutOfRangeException();
             }
